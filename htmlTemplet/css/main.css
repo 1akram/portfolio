@@ -1,0 +1,551 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+
+
+:root{
+    --oxford-blue: #102542ff;
+    --bittersweet: #f87060ff;
+    --light-gray: #cdd7d6ff;
+    --white: #fff;
+}
+
+*{
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    color:var(--oxford-blue);
+  
+}
+
+ul{
+    list-style: none;
+    margin: 20px 0px;
+}
+ul li{
+   padding: 5px ;
+ }
+
+input{
+    font-weight: bold;
+}
+textarea{
+    min-height: 200px;
+    max-width: 100%;
+
+}
+.btn{
+    margin: 10px auto;
+    font-size: 1.5em;
+    padding: 10px 15px;
+    display: flex;
+    width: 70%;
+    text-align: center;
+    display: block;
+    background: var(--oxford-blue);
+    color: white;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    border: 1px solid var(--oxford-blue);
+    border-radius: .25rem;
+    transition: 0.5s;
+}
+.btn i,.btn a{
+    color:white;
+}
+.btn i{
+    margin: 2px 5px;
+}
+.btn:hover{
+    background-color: var(--bittersweet);
+    border-color: var(--bittersweet);
+    cursor: pointer;
+}
+
+
+
+.input{
+    display: block;
+    width: 100%;
+    height: 2.5rem;
+    padding: .5rem .75rem;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    color: var(--oxford-blue);
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid var(--oxford-blue);
+    border-radius: .25rem;
+    transition: 0.5s;
+    margin:20px 2px;
+    letter-spacing: 1.5px;
+}
+.input:hover,input:focus{
+    box-shadow: 0 0 2px 1px var(--bittersweet) inset;
+    border: 1px solid #0000;
+ 
+}
+
+
+.custom-checkbox ,.custom-radio{
+    position: relative;
+    padding: 10px  0px;
+}
+.custom-checkbox label,.custom-radio label{
+    position: relative;
+    margin:0px 20px;
+    padding: 0px 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.custom-checkbox label::before,.custom-radio label::before{
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: -15px;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--oxford-blue);
+    transition: .5s;
+   
+}
+.custom-checkbox input[type="checkbox"],.custom-radio input[type="radio"]{
+    display: none;
+}
+.custom-checkbox input[type="checkbox"]:checked +label::before,.custom-radio input[type="radio"]:checked +label::before{
+    width: 10px;
+    top: 8px;
+    left: -10px;
+    border-width: 3px;
+    border-left: none;
+    border-top: none;
+    border-color: var(--bittersweet);
+    transform: rotate(45deg);
+}
+
+ 
+ 
+.nav{
+    position: fixed;
+    display: flex;
+    top:0;
+    z-index: 1;
+    height: 80px;
+    width: 100%;
+    background-color: var(--bittersweet);
+}
+.nav + div{
+    margin-top: 80px;
+}
+.nav .back{
+    display: flex;
+    min-width: 100px;
+    height: 100%;
+    font-size: 3em;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    transition: 0.5s;
+}
+
+.back i{
+    color:var(--oxford-blue);
+    font-weight: normal;
+    margin: 5px auto;
+    transition: 0.5s;
+}
+.nav .back:hover i{
+    font-weight: bolder;
+ }
+.home{
+    width: 100%;
+    min-height: 100vh;
+    z-index: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--oxford-blue);
+ }
+  
+.home .item{
+    margin: 0px 5px;
+    height: 150px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+    color:var(--white);
+    border-radius: 50%;
+    transition: width 0.5s ease-in-out,height 0.5s ease-in-out;
+    border: 2.5px solid #fff;
+   
+}
+.home .item:hover{
+    height: 200px;
+    width: 200px;
+}
+.content{
+    position: absolute;
+    background-color: var(--white);
+    top:0;
+    left: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    clip-path: circle(0% at 0% 0%);
+    display: flex;
+    overflow-y: scroll;
+    transition: clip-path 1s ease-in;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+.content::before{
+    background: linear-gradient(75deg,#f86f609b 35%,rgba(16, 37, 66, 0.685));
+    height: 100%;
+    left: 0;
+    right: 0;
+    position: absolute;
+    content: "";
+    z-index: 0;
+}
+.content::-webkit-scrollbar {
+    display: none;
+}
+.close{
+    padding: 10px;
+    font-size: 25px;
+    cursor: pointer;
+    font-weight: 400;
+    position: absolute;
+    top:20px;
+    left: 20px;
+    margin: 5px;
+    z-index: 1;
+ }
+.close::before{
+    font-family: "Font Awesome 5 Pro";
+    content: "\f410";
+}
+.close:hover{
+    font-weight: 900 ;
+ }
+
+.active{
+
+    clip-path : circle(200% at 0% 0%);
+
+}
+
+
+
+.subContent{
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    padding-top: 20px;
+    background: white;
+    box-shadow: 0 0 27px rgba(96,96,96,.34);
+  
+
+}
+.subContent .header{
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    margin: 20px auto;
+}
+.subContent .header h1 {
+    font-weight: bolder;
+    text-transform: capitalize;
+    letter-spacing: 1.5px;
+    padding: 20px 10px;
+    border-bottom: solid 3px var(--bittersweet);
+}
+
+/* aboutME section  */
+ .info{
+  
+     font-size: large;
+     padding: 20px;
+     max-width: 600px;
+    
+ }
+ 
+.info .avatar  {
+   width: 200px;
+   height: 200px;
+   margin: auto;
+   display: flex;  
+   box-shadow: 0 0 27px rgba(96,96,96,.34);
+}
+
+.info ul li span{
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+.info .links{
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+.links span{
+    padding: 5px;
+    margin: 5px;
+}
+.links span a{
+    transition: 0.5s;
+}
+.links span a:hover{
+    cursor: pointer;
+    font-size: 2em;
+    color:var(--bittersweet);
+    
+}
+.description  {
+    font-size: large;
+    padding: 10px 20px;
+    margin:30px;
+    width: 100%;
+    border-top: solid 3px var(--bittersweet);
+    
+  }
+.description .des-title,.skills .skl-title{
+    width:100%;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: bolder;
+    margin: 10px auto;
+
+}
+.des-content{
+    font-size: 1.3em;
+    margin: 10px 0px;
+
+}
+.skills{
+    border-top: solid 3px var(--bittersweet);
+    width: 100%;
+    padding: 20px;
+    margin: 30px;
+}
+
+.skill{
+    margin: 10px 0;
+}
+.skill .skl-name{
+    display: flex;
+    padding: 10px 0px;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+.skl-name span{
+    padding-right: 10px;
+}
+.skl-name span:last-child{
+    margin-left: auto;
+}
+.skill .progress{
+    width: 100%;
+    background-color: var(--light-gray );
+    height: 10px;
+    border-radius: 50px;
+ }
+ .skill .progress > div:first-of-type{
+     height: 100%;
+     width: 55%;
+     border-radius: 50px;
+ }
+
+/* end aboutMe section  */
+/* portfolio section  */
+.projects{
+  width: 100%;
+}
+.projects .project{
+    width: 100%;
+    margin: 10px auto;
+    transition: 0.5s;
+    border:0.5px solid var(--light-gray);
+ 
+ }
+ .projects .project:hover{
+    border:0.5px solid rgba(0, 0, 0, 0);
+    box-shadow: 0 0 10px var(--bittersweet);
+
+ }
+.project .p-img{
+    width: 100%;
+    min-height: 250px;
+    max-height: 300px;
+    background-color: black;
+    padding : 0;
+ 
+}
+.project .p-img img{
+    width: 100%;
+    height: 100%;
+}
+.project .p-img img{
+    width: 100%;
+    height: 100%;
+}
+.p-img-full{
+    width: 100%;
+    height: 100vh;
+ 
+}
+.p-img-full img{
+    width: 100%;
+    height: 100vh;
+}
+.p-content{
+    flex-flow: column;
+    margin: 0;
+}
+.p-content .p-title{
+    padding: 30px 10px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+}
+.p-content .p-desctiption{
+    padding: 0px 10px;
+    font-size: 20px;
+}
+.p-content .p-techniques{
+    padding:20px 10px;
+    margin:20px  0px;
+}
+.p-content .p-techniques span{
+    padding: 0px 10px ;
+    margin-right: 5px;
+    font-size:25px;
+    border-left: 3px solid var(--bittersweet);
+    font-variant: small-caps;
+}
+/* end portfolio section  */
+
+/* services section  */
+.services{
+    width: 100%;
+}
+.services .service{
+    display: flex;
+    flex-flow: column;
+    margin: 20px 0px;
+}
+.service:hover{
+    cursor:pointer;
+}
+.service .s-icon{
+    display: flex;
+    text-align: center;
+    font-size: 5em;
+    margin: 10px auto;
+    padding: 15px;
+    border: solid 8px var(--oxford-blue);
+    border-radius: 70px;
+    transition: 0.5s;
+}
+.service .s-icon>i{
+   padding:10px; 
+   transition: 0.5s;
+}
+.service:hover > .s-icon{
+    border-color: var(--bittersweet);
+}
+.service:hover > .s-icon>i{
+    color:var(--bittersweet);
+    font-weight:900;
+}
+.service .s-title{
+    text-align: center;
+    padding: 10px 20px;
+    text-transform: capitalize;
+    transition: 0.5s;
+}
+.service:hover >.s-title{
+    color:var(--bittersweet);
+    letter-spacing: 2px;
+}
+.service .s-description{}
+
+
+
+/* end services section  */
+
+/* contactMe section */
+.contactFormBox{
+    width: 100%;
+    justify-content: center ;
+     
+}
+/* end contactMe section  */
+
+/* project page  */
+
+/* end project page  */
+
+/* login page  */
+.loginBox{
+    height: 100vh;
+    display:flex;
+    align-items: center;
+}
+/* end login Page  */
+
+
+/* admin  */
+.separation{
+   border-top: solid 3px var(--bittersweet);
+   margin-top: 60px;
+   padding-top: 20px;
+
+}
+
+/* adminPanelPage */
+.skillsForm{
+
+}
+.p-content div:first-child{
+    align-items: center;
+
+}
+.p-content .p-info{
+    align-items: center;
+}
+.p-info .edit-btns .btn {
+    width: 100%;
+  
+}
+.p-content .add-project,.p-content .add-service{
+    align-items: center;
+    justify-content: center;
+    margin: 60px auto;
+    margin-bottom: 10px;
+}
+ 
+/* end admin panel page */
+
+/* add page  */
+.techniques{
+    overflow-y: scroll;
+    max-height: 400px;
+    
+}
+/* end add page */
+
+/* end admin  */
