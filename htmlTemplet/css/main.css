@@ -90,11 +90,11 @@ textarea{
 }
 
 
-.custom-checkbox ,.custom-radio{
+.custom-checkbox ,.custom-radio,.custom2-radio{
     position: relative;
     padding: 10px  0px;
 }
-.custom-checkbox label,.custom-radio label{
+.custom-checkbox label,.custom-radio label {
     position: relative;
     margin:0px 20px;
     padding: 0px 10px;
@@ -102,6 +102,17 @@ textarea{
     font-size: 1.2em;
 }
 
+.custom-checkbox input[type="checkbox"],.custom-radio input[type="radio"],.custom2-radio input[type="radio"]{
+    display: none;
+}
+.custom2-radio label{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2em;
+}
 .custom-checkbox label::before,.custom-radio label::before{
     content: '';
     position: absolute;
@@ -113,9 +124,21 @@ textarea{
     transition: .5s;
    
 }
-.custom-checkbox input[type="checkbox"],.custom-radio input[type="radio"]{
-    display: none;
+
+.custom2-radio label::before{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    top:0;
+    width:100%;
+    height:0%;
+    background-color: #0000;
+    border-top: solid 3px var(--oxford-blue);
+    transition: 0.5s;
 }
+
+
+
 .custom-checkbox input[type="checkbox"]:checked +label::before,.custom-radio input[type="radio"]:checked +label::before{
     width: 10px;
     left: -10px;
@@ -125,7 +148,13 @@ textarea{
     border-color: var(--bittersweet);
     transform: rotate(45deg);
 }
-
+.custom2-radio input[type="radio"]:checked +label *{
+    color:var(--white);
+}
+.custom2-radio input[type="radio"]:checked +label::before{
+    background-color: var(--oxford-blue);
+    height:100%;
+}
  
  
 .nav{
@@ -482,7 +511,7 @@ textarea{
     color:var(--bittersweet);
     letter-spacing: 2px;
 }
-.service .s-description{}
+ 
 
 
 
@@ -506,6 +535,9 @@ textarea{
     display:flex;
     align-items: center;
 }
+.loginBox .subContent{
+    padding-bottom: 50px;
+}
 /* end login Page  */
 
 
@@ -518,9 +550,7 @@ textarea{
 }
 
 /* adminPanelPage */
-.skillsForm{
-
-}
+ 
 .p-content div:first-child{
     align-items: center;
 
@@ -541,7 +571,7 @@ textarea{
  
 /* end admin panel page */
 
-/* add page  */
+/* add project page  */
 .techniques{
     display:flex;
     flex-wrap: wrap;
@@ -562,6 +592,25 @@ textarea{
 .techniques .custom-checkbox input[type="checkbox"]:checked +label::before,.techniques .custom-radio input[type="radio"]:checked +label::before{
     left: -15px;
 }
-/* end add page */
-
+/* end  add project page */
+/* add service page  */
+.icons-box {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 300px;
+    overflow-y: auto;
+    margin: 40px auto;
+}
+.icons-box .custom2-radio label span {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 1.5em;
+    margin: 5px auto;
+    padding: 5px;
+    width: 60px;
+    height: 40px;
+    text-align: center;
+}
+/* end add service page  */
 /* end admin  */
