@@ -20,6 +20,7 @@
     </div>
     <div>
         <div class="container">
+            <!-- aboutME  -->
             <div id="aboutMe" class="row">
                 <div class="col-md-10 col-sm-12 p-content">
                     <h1 class="p-title"> aboutMe</h1>
@@ -67,6 +68,8 @@
                     </form>
                 </div>
             </div>
+            <!-- end aboutME  -->
+            <!-- portfolio  -->
 
             <div id="portfolio" class="row ">
 
@@ -127,6 +130,8 @@
                     </div>
                 </div>
             </div>
+            <!-- end portfolio  -->
+            <!-- services  -->
 
             <div id="services" class="row ">
 
@@ -182,7 +187,22 @@
                     </div>
                 </div>
             </div>
+            <!-- end services  -->
 
+            <!-- settings  -->
+            <div id="settings" class="row ">
+
+                <div class="separation col-md-10 col-sm-12 p-content">
+                    <h1 class="p-title">settings</h1>
+                    <form action="" method="get">
+                        <input type="text" class="input" name="title" placeholder="site title">
+                        <input type="text" class="input" name="KeyWords" placeholder="site key words ">
+                        <input type="file" class="input" name="logo" placeholder="logo">
+                        <button type="submit" class="btn"><i class="fas fa-save"></i>save</button>
+                    </form>
+                </div>
+            </div>
+            <!-- end settings  -->
         </div>
     </div>
     <script src="../js/jquery3.5.1.min.js"></script>
@@ -200,6 +220,8 @@
                 $(this).closest(".skillsForm").remove();
 
             });
+
+            
             var networks = $("#networks");
             $("#addNetwork").click(function () {
                 var network = '<div class="row networkForm"><div class="col-md-6 col-sm-12"><input type="url" class="input" name="networkUrl[]" placeholder="url"></div><div class="col-md-4 col-sm-12"><input type="text" class="input" name="networkIcon[]" placeholder="icon"></div><div class="col-md-2"><button id="deleteNetwork" type="button" class="btn"><i class="fas fa-minus"></i></button></div></div>';
