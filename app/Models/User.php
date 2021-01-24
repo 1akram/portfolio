@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    protected $table='users';
     use HasFactory, Notifiable;
 
     /**
@@ -40,4 +41,17 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function projects(){
+        return $this->hasMany(Project::class);
+    }
+    public function services(){
+        return $this->hasMany(Service::class);
+    }
+    public function skills(){
+        return $this->hasMany(Skill::class);
+    }
+    public function socialMediaLinks(){
+        return $this->hasMany(SocialMedia::class);
+    }
 }
