@@ -42,6 +42,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function age(){
+       return(\Carbon\Carbon::parse($this->birthDay)->diff(\Carbon\Carbon::now())->y);
+      
+       
+    }
     public function projects(){
         return $this->hasMany(Project::class);
     }
