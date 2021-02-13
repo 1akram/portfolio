@@ -9,7 +9,7 @@
     <meta name="author" content="Akram Ayeb">
     <link rel="icon" type="image/png" href="{{asset('favicon.png')}}" />
     <link rel="stylesheet" href="{{ asset('css/bootstrap-grid.min.css') }}">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet" href="{{ asset('fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
     @yield("head")  
 </head>

@@ -1,0 +1,51 @@
+@extends('masterLayout.layout')
+@section('pageTitle')
+    @lang('texts.EDIT_KEY'){{" ".$service->title}}
+@endsection
+@section('head')
+@endsection
+@section('content')
+ 
+     <!--  body -->
+     {{-- top nav bar  --}}
+     <div class="nav">
+        <div class="nav-item"><a href="{{route('profile')}}"><i class="fas fa-home"></i></a></div>
+    </div>
+ 
+    <div class="container">
+        <div class="row"  >
+            <form action="{{route('updateService')}}" method="post" id="update">@csrf <input type="hidden" name="id" value="{{$service->id}}"></form>
+
+
+                <div class="col-sm-12">
+                    <input type="text" name="title" placeholder="service Title" value="{{$service->title}}" class="input @error('name') is-invalid-input @enderror" form="update">
+                    @error('title')
+                      <div class="alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="col-sm-12">
+                    <textarea class="input @error('description') is-invalid-input @enderror " placeholder="service Description" name="description" cols="30" rows="30" form="update">{{$service->description}}</textarea>
+                    @error('description')
+                        <div class="alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="col-sm-12 icons-box  ">
+                    <input type="text" name="icon" value="{{$service->icon}}" placeholder="icon name without far " class="input  @error('icon') is-invalid-input @enderror" form="update">
+                    @error('description')
+                      <div class="alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="col-sm-12 row">
+                    <div class="col-md-6 col-sm-12"><button class="btn" type="submit" form="update"><i class="fas fa-save"></i>save</button></div>
+                    <div class="col-md-6 col-sm-12"><a href="{{route('dashboard')}}" class="btn" ><i class="fas fa-times-circle"></i> cancel</a></div>
+                 </div>
+           
+        </div>
+
+    </div>
+@endsection
+
+@section('extr')
+ 
+ 
+@endsection

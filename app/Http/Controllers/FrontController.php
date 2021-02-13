@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-class FrontController extends Controller
+ class FrontController extends Controller
 {
     //
     public function profileShow(){
         $user=User::all()->first();
-       
-        return view('index',compact([
+         return view('index',compact([
             'user',
+            
         ]));
 
     }

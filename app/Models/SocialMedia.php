@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class SocialMedia extends Model
 {
     protected $table='social_media';
+    protected $fillable = [
+        'url',
+        'icon',
+    ];
     use HasFactory;
     public function user(){
         return $this->belongsTo(User::class);

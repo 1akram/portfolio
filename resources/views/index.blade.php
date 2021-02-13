@@ -25,19 +25,17 @@
             <div class="info">
                 <div class="row">
                     <div class="col-md-5 col-sm-12">
-                        <img class=" avatar" src="{{asset(Storage::url($user->avatar))}}" alt="">
+                        <img class=" avatar" src="{{asset(Storage::url($user->avatar))}}" alt="{{$user->name}}">
                     </div>
                     <div class="col-md-7 col-sm-12">
                         <ul>
                             <li><span>@lang('texts.NAME_KEY') : </span>{{$user->name}}</li>
                             <li><span>@lang('texts.AGE_KEY') : </span>{{$user->age()}}</li>
-                            <li><span>@lang('texts.EMAIL_KEY') : </span>{{$user->email}}</li>
+                            <li id="emali"><span>@lang('texts.EMAIL_KEY') : </span>{{$user->email}}</li>
                             <li><span>@lang('texts.PHONE_KEY') : </span>{{$user->phone}}</li>
                             <li><span>@lang('texts.ADDRESS_KEY') : </span>{{$user->address}}</li>
                         </ul>
                     </div>
-
-
                 </div>
                 <div class="row links">
                     @foreach ($user->socialMediaLinks as $socialMediaLink)
@@ -57,7 +55,7 @@
 
             <!-- skills section  -->
             <div class="skills">
-                <h1 class="skl-title">@lang('texts.MY_SKILLS_KEY')</h1>
+                <h1 class="skl-title">@lang('texts.SKILLS_KEY')</h1>
                 <div class="row">
                     @foreach ($user->skills as $skill)
                         <div class="col-sm-6 skill">
@@ -95,24 +93,25 @@
                 <h1>@lang('texts.MY_PROJECTS_KEY')</h1>
             </div>
             <div class="projects">
-                <!-- Projects  -->
+               
+                {{-- <!-- Projects  --> --}}
                 @foreach ($user->projects as $project)
                 <div class="row project">
-                    <div class="col-md-4 col-sm-12 p-img"><img src="" alt=""></div>
+                    <div class="col-md-4 col-sm-12 p-img"><img src=" @if ($project->haveImages()) {{ asset(Storage::url($project->images[0]->url)) }} @else {{asset('img/project.jpg')}}  @endif"  alt="{{$project->title}}"></div> 
 
                     <div class=" row col-md-8 col-sm-12 p-content">
 
-                        <h1 class="p-title"><a href="#">{{$project->title}}</a></h1>
+                        <h1 class="p-title"><a href="{{ route('showProject', ['id'=>$project->id,'title'=>$project->title]) }}">{{$project->title}}</a></h1>
                         <p class="p-desctiption">{{$project->description}}</p>
                         <div class="p-techniques">
                             @foreach ($project->techniques as $technique) 
-                            <span>{{$technique->name}}</span>
+                              <span>{{$technique->name}}</span>
                             @endforeach
                         </div>
                     </div>
                 </div>
                 @endforeach
-                <!-- end projects section  -->
+                {{-- <!-- end projects section  --> --}}
             </div>
 
 

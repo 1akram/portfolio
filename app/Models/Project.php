@@ -16,7 +16,10 @@ class Project extends Model
         return $this->belongsTo(User::class);
     }
     public function techniques(){
-        return $this->belongsToMany(Technique::class, 'techniques_users', 'technique_id', 'project_id');
+        return $this->belongsToMany(Technique::class, 'techniques_users', 'project_id', 'technique_id');
     }
 
+    public function haveImages(){
+        return count($this->images) >0;
+    }
 }
