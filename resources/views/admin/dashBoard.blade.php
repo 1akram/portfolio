@@ -6,10 +6,11 @@
 @endsection
 @section('content')
  
-     <!--  body -->
+     {{-- <!--  body --> --}}
      {{-- top nav bar  --}}
     <div class="nav">
         <div class="nav-item"><a href="{{route('profile')}}"><i class="fas fa-home"></i></a></div>
+        <div class="nav-item"><a href="{{route('logout')}}"><i class="fas  fa-door-open"></i></a></div>
     </div>
 
     {{-- end top nav bar  --}}
@@ -20,11 +21,11 @@
        
  
         <div class="container">
-            <!-- aboutME  -->
+            {{-- <!-- aboutME  --> --}}
             <div id="aboutMe" class="row">
                 <div class="col-md-10 col-sm-12 p-content">
                     <h1 class="p-title">@lang('texts.ABOUT_ME_KEY')</h1>
-                    <form action="{{route('aboutMe.update')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('updateAboutme')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="text" class="input @error('name') is-invalid-input @enderror" name="name" value="{{$user->name}}" placeholder="@lang('texts.NAME_KEY')" >
                         @error('name')
@@ -119,9 +120,9 @@
                     </form>
                 </div>
             </div>
-            <!-- end aboutME  -->
+            {{-- <!-- end aboutME  --> --}}
 
-            <!-- portfolio  -->
+            {{-- <!-- portfolio  --> --}}
 
             <div id="portfolio" class="row ">
 
@@ -140,8 +141,14 @@
                             <div class="col-md-3 row edit-btns">
                                 <div class="col-md-6 col-sm-12"><a href="{{ route('editProject', ['id'=>$project->id]) }}" class="btn"><i class="fas fa-edit"></i></a>
                                 </div>
-                                <div class="col-md-6 col-sm-12"><a href="" class="btn"><i
-                                            class="fas fa-trash-alt"></i></a></div>
+                                <div class="col-md-6 col-sm-12">
+                                    <form action="{{ route('deleteProject') }}" method="POST" id="deleteProject{{$project->id}}">
+                                        @csrf 
+                                        <input type="hidden" name="id" value="{{$project->id}}">
+                                    </form>
+                                    <a data-delete="deleteProject{{$project->id}}" href="#portfolio" class="btn jq-delete-project"><i class="fas fa-trash-alt"></i></a>
+                                </div>
+                                
                             </div>
                         </div>
                             
@@ -151,13 +158,13 @@
                     </div>
 
                     <div class="row add-project">
-                        <div class="col-md-6 col-sm-12"><a href="addProject.html" class="btn"><i
+                        <div class="col-md-6 col-sm-12"><a href="{{ route('addProject') }}" class="btn"><i
                                     class="fas fa-plus"></i></a></div>
                     </div>
                 </div>
             </div>
-            <!-- end portfolio  -->
-            <!-- services  -->
+            {{-- <!-- end portfolio  --> --}}
+            {{-- <!-- services  --> --}}
 
             <div id="services" class="row ">
 
@@ -166,7 +173,6 @@
 
                     @foreach ($services as $service)
                         
-                    @endforeach
                     <div class="row p-info">
                         <div class="col-md-6">
                             <h3>{{$service->title}}</h3>
@@ -176,10 +182,16 @@
                         </div>
                         <div class="col-md-3 row edit-btns">
                             <div class="col-md-6 col-sm-12"><a href="{{route('editService',$service->id)}}" class="btn"><i class="fas fa-edit"></i></a></div>
-                            <div class="col-md-6 col-sm-12"><a href="" class="btn"><i class="fas fa-trash-alt"></i></a>
+                            <div class="col-md-6 col-sm-12">
+                                <form action="{{ route('deleteService') }}" method="POST" id="deleteService{{$service->id}}">
+                                    @csrf 
+                                    <input type="hidden" name="id" value="{{$service->id}}">
+                                </form>
+                                <a data-delete="deleteService{{$service->id}}" href="#services" class="btn jq-delete-service"><i class="fas fa-trash-alt"></i></a>
                             </div>
                         </div>
                     </div>
+                    @endforeach
 
   
 
@@ -190,31 +202,69 @@
                     </div>
                 </div>
             </div>
-            <!-- end services  -->
+            {{-- <!-- end services  --> --}}
 
-            <!-- settings  -->
+            {{-- <!-- settings  --> --}}
             <div id="settings" class="row ">
 
                 <div class="separation col-md-10 col-sm-12 p-content">
                     <h1 class="p-title">@lang('texts.SETTINGS_KEY')</h1>
-                    <form action="" method="get">
-                        <input type="text" class="input" name="title" placeholder="@lang('texts.SITE_TITLE_KEY')">
-                        <input type="text" class="input" name="KeyWords" placeholder="@lang('texts.SITE_KEYWORDS_KEY')">
+                    <form action="{{ route('updateSetting') }}" method="post" enctype="multipart/form-data" >
+                        @csrf
+                        <input type="text" class="input" name="title" placeholder="@lang('texts.SITE_TITLE_KEY')" value="{{$setting->siteTitle}}">
+                        <input type="text" class="input" name="KeyWords" placeholder="@lang('texts.SITE_KEYWORDS_KEY')" value="{{$setting->keyWord}}">
                         <input type="file" class="input" name="logo" accept="image/png">
+                        <div>
+                            <img src="{{asset(Storage::url($setting->logo))}}" class="img-thumbnail" alt="{{$setting->siteTitle}}">
+                        </div>
                         <button type="submit" class="btn"><i class="fas fa-save"></i>@lang('texts.SAVE_KEY')</button>
                     </form>
                 </div>
             </div>
-            <!-- end settings  -->
+            {{-- <!-- end settings  --> --}}
+            {{-- <!-- password  --> --}}
+            <div id="password" class="row ">
+
+                <div class="separation col-md-10 col-sm-12 p-content">
+                    <h1 class="p-title">@lang('texts.PASSWORD_KEY')</h1>
+                    <form action="{{ route('changePassword') }}" method="post"  >
+                        @csrf
+                        <input type="password" class="input" name="password" autocomplete="false" placeholder="@lang('texts.PASSWORD_KEY')" >
+                        @error('password')
+                        <div class="alert-danger">{{ $message }}</div>
+                        @enderror  
+                        <input type="password" class="input" name="password_confirmation" placeholder="@lang('texts.PASSWORD_KEY')" >
+                        <button type="submit" class="btn"><i class="fas fa-save"></i>@lang('texts.SAVE_KEY')</button>
+                    </form>
+                </div>
+            </div>
+            {{-- <!-- end password  --> --}}
         </div>
     </div>
-    <!-- end body -->
+    {{-- <!-- end body --> --}}
 
 @endsection
 
 @section('extr')
 <script>
     $(document).ready(function () {
+
+
+        $(".jq-delete-service").click(function(){
+
+            if (confirm("did you want to delete this service ?")) {
+              $('#'+$(this).data("delete")).submit();
+            }
+        
+        });
+
+        $(".jq-delete-project").click(function(){
+
+            if (confirm("did you want to delete this project ?")) {
+            $('#'+$(this).data("delete")).submit();
+            }
+
+        });
 
         var Skills = $("#skills");
         $("#addSkill").click(function () {

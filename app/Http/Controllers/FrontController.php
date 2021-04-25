@@ -8,7 +8,7 @@ use App\Models\User;
 {
     //
     public function profileShow(){
-        $user=User::all()->first();
+         $user=User::all()->first();
          return view('index',compact([
             'user',
             
@@ -16,7 +16,5 @@ use App\Models\User;
 
     }
      
-    // public function show() id 
-    // edit id
-    // update id 
+    
 }

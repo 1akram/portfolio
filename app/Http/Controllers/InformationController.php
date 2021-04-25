@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
-use App\Models\User;
+ 
 
 class InformationController extends Controller
 {
@@ -28,7 +29,7 @@ class InformationController extends Controller
             'avatar'=>'nullable|mimes:jpeg,png,jpg|max:2050', 
         ])->validate();
         
-        $user=User::first(); //Auth::user()
+        $user=Auth::user();
         if($request->hasFile('avatar'))
             $user->uploadAvatar($request->avatar);
         $user->updateInfo($request->all());
@@ -40,5 +41,20 @@ class InformationController extends Controller
 
 
 
+    }
+    public function changePassword(Request $request){
+        Validator::make($request->all(), [
+            'password' => 'required|string|confirmed|min:8|max:255',
+             
+        ])->validate();
+        $user=Auth::user();
+        $user->password=Hash::make($request->password);
+        $user->save();
+
+         
+        return redirect()->back() ;      
+          
+    
+        
     }
 }

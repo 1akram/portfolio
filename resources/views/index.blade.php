@@ -6,22 +6,21 @@
 @endsection
 @section('content')
  
-     <!--  body -->
+     {{-- <!--  body --> --}}
      <nav class="home">
         <a id="aboutMe" href="#aboutMe" class="item bg-color-bittersweet">@lang('texts.ABOUT_ME_KEY')</a>
         <a id="portfolio" href="#portfolio" class="item bg-color-light-gray">@lang('texts.PORTFOLIO_KEY')</a>
         <a id="services" href="#services" class="item bg-color-bittersweet">@lang('texts.SERVICES_KEY')</a>
-        <a id="contactMe" href="#contactMe" class="item bg-color-bittersweet">@lang('texts.CONTACT_ME_KEY')</a>
     </nav>
 
 
-    <!-- aboutMe section -->
+    {{-- <!-- aboutMe section --> --}}
     <div data-content="aboutMe" class="content">
 
 
         <div class="close"></div>
         <div class="subContent container">
-            <!-- info section  -->
+            {{-- <!-- info section  --> --}}
             <div class="info">
                 <div class="row">
                     <div class="col-md-5 col-sm-12">
@@ -43,17 +42,17 @@
                     @endforeach
                 </div>
             </div>
-            <!-- end info section  -->
+            {{-- <!-- end info section  --> --}}
 
-            <!-- description section  -->
+            {{-- <!-- description section  --> --}}
             <div class="row description">
 
                 <h1 class="des-title">@lang('texts.ABOUT_ME_KEY')</h1>
                 <p class="des-content">{{$user->description}}</p>
             </div>
-            <!-- end description section  -->
+            {{-- <!-- end description section  --> --}}
 
-            <!-- skills section  -->
+            {{-- <!-- skills section  --> --}}
             <div class="skills">
                 <h1 class="skl-title">@lang('texts.SKILLS_KEY')</h1>
                 <div class="row">
@@ -71,7 +70,7 @@
              
                 </div>
             </div>
-            <!-- end skills section  -->
+            {{-- <!-- end skills section  --> --}}
 
         </div>
 
@@ -83,9 +82,9 @@
 
 
     </div>
-    <!-- end aboutMe section  -->
+    {{-- <!-- end aboutMe section  --> --}}
 
-    <!-- portfolio section  -->
+    {{-- <!-- portfolio section  --> --}}
     <div data-content="portfolio" class="content">
         <div class="close "></div>
         <div class="subContent container">
@@ -119,9 +118,9 @@
 
         </div>
     </div>
-    <!-- end portfolio section  -->
+    {{-- <!-- end portfolio section  --> --}}
 
-    <!-- services section  -->
+    {{-- <!-- services section  --> --}}
     <div data-content="services" class="content">
         <div class="close"></div>
         <div class="subContent container">
@@ -129,7 +128,7 @@
                 <h1>@lang('texts.OUR_SERVICES_KEY')</h1>
             </div>
             <div class="row services">
-                <!-- service section  -->
+                {{-- <!-- service section  --> --}}
                 @foreach ($user->services as $service)
                 <div class="col-md-4 col-sm-6 service">
                     <div class="s-icon"><i class="far {{$service->icon}}"></i></div>
@@ -137,16 +136,16 @@
                     <div class="s-description">{{$service->description}}</div>
                 </div>   
                 @endforeach
-                <!-- end service section  -->
+                {{-- <!-- end service section  --> --}}
  
              
             </div>
         </div>
 
     </div>
-    <!-- end services section  -->
+    {{-- <!-- end services section  --> --}}
 
-    <!-- contactMe section  -->
+    {{-- <!-- contactMe section  --> --}}
     <div data-content="contactMe" class="content">
         <div class="close"></div>
         <div class="subContent container">
@@ -166,8 +165,8 @@
             </div>
         </div>
     </div>
-    <!-- end contactMe section  -->
-    <!-- end body -->
+    {{-- <!-- end contactMe section  --> --}}
+    {{-- <!-- end body --> --}}
 
 @endsection
 

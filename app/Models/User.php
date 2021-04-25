@@ -77,6 +77,7 @@ class User extends Authenticatable
         $this->birthDay=new Carbon($request['birthDay']);
         $this->phone=$request['phone'];
         $this->address=$request['address'];
+        $this->description=$request['description'];
         if(!isset($request['skillName'])||!isset($request['skillProgress'])){
             $request['skillName']=[];
             $request['skillProgress']=[]; 

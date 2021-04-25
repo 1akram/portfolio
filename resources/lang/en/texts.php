@@ -2,7 +2,7 @@
 
 return [
  
-
+    'LOGIN_KEY'=>'login',
     'ABOUT_ME_KEY' => 'about me',
     'PORTFOLIO_KEY' => 'portfolio',
     'SERVICES_KEY' => 'services',
@@ -11,6 +11,7 @@ return [
     'BIRTHDAY_KEY'=>'birth day',
     'AGE_KEY' => 'age',
     'EMAIL_KEY' => 'email',
+    'PASSWORD_KEY' => 'password',
     'PHONE_KEY' => 'phone',
     'ADDRESS_KEY' => 'address',
     'SKILLS_KEY'=>'skills',
@@ -34,8 +35,20 @@ return [
     'ICON_KEY'=>'icon',
     'EDIT_KEY'=>'edit',
     'ADD_SERVICE_KEY'=>'add service',
+    'SERVICE_TITLE_KEY'=>'service title',
     'DEMO_KEY'=>'demo',
     'DOWNLOAD_KEY'=>'download',
+    'ADD_PROJECT_KEY'=>'add project',
+    'PROJECT_TITLE_KEY'=>'project title',
+    'TECHNIQUES_KEY'=>'techniques',
+    'LINKS_KEY'=>'links',
+    'IMAGES_KEY'=>'images',
+    'CANCEL_KEY'=>'cancel',
+    'SERVICE_DESCRIPTION_KEY' =>'service description',
+    'ICON_WITHOUT_FAR_KEY'=>'icon name without far',
+    'LOGIN_INFO_DONT_MATCH_OUR_RECORDS_KEY'=>'login info do not match our records.',
+    
+
 
 
 ];

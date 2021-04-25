@@ -16,10 +16,19 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
+
 if (file_exists(__DIR__.'/../storage/framework/maintenance.php')) {
     require __DIR__.'/../storage/framework/maintenance.php';
 }
 
+// installer 
+if (!file_exists(__DIR__.'/../vendor')||!file_exists(__DIR__.'/../.env')) {
+    header("Location:/install.php");
+    return  ;
+ } 
+ 
+  
+ 
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader

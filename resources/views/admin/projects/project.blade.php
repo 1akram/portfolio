@@ -9,13 +9,15 @@
      {{-- top nav bar  --}}
      <div class="nav">
         <div class="nav-item"><a href="{{route('profile')}}"><i class="fas fa-home"></i></a></div>
+        <div class="nav-item"><a href="{{route('logout')}}"><i class="fas fa-door-open"></i></a></div>
+
     </div>
 
     {{-- end top nav bar  --}}
     @foreach ($project->images as $image)
         <div class="p-img-full"><img src="{{asset(Storage::url($image->url))}}" alt="{{$project->title}}"></div>
         @php
-            break;
+            break;// need edite later 
         @endphp
     @endforeach
     <div>

@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Service;
-
+use Illuminate\Support\Facades\Auth;
 class ServiceController extends Controller
 {
     public function addService(){
-        return view('admin.addService');
+        return view('admin.services.addService');
     }
     public function saveService(Request $request){
         Validator::make($request->all(),[
@@ -20,9 +20,9 @@ class ServiceController extends Controller
         $service->title=$request->title;
         $service->description=$request->description;
         $service->icon=$request->icon;
-        $service->user()->associate(1);//Auth::user() 
+        $service->user()->associate(Auth::user()->id);
         $service->save();
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard', ['#services']);
     }
 
 
@@ -32,7 +32,7 @@ class ServiceController extends Controller
             
         ])->validate(); // lazem tzid tchof idha hadh l user howa mol service hadhi --ki tkon bzaf l users  (service exist && service->belongeto(thisUser))
         $service=Service::find($id);
-         return view('admin.editService',compact([
+         return view('admin.services.editService',compact([
             'service',
         ]));
     }
@@ -46,11 +46,20 @@ class ServiceController extends Controller
             'icon' => 'required|string|max:255',
         ])->validate(); // lazem tzid tchof idha hadh l user howa mol service hadhi --ki tkon bzaf l users  (service exist && service->belongeto(thisUser))
         $service=Service::find($request->id);
-         $service->title=$request->title;
+        $service->title=$request->title;
         $service->description=$request->description;
         $service->icon=$request->icon;
         $service->save();
-        return redirect()->route('editService',$service->id);
+        return redirect()->back();
         
+    }
+
+
+    public function deleteService(Request $request){
+        Validator::make($request->all(),[
+            'id' => 'exists:services,id',
+        ])->validate(); // lazem tzid tchof idha hadh l user howa mol service hadhi --ki tkon bzaf l users  (service exist && service->belongeto(thisUser))
+        Service::destroy($request->id) ;  
+        return redirect()->route('dashboard', ['#services']);
     }
 }
