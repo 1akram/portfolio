@@ -6,12 +6,7 @@ ini_set('max_execution_time', 300);
  $vandorPath=__DIR__.'/../vendor';
 
 
- $targetFolder = $_SERVER['DOCUMENT_ROOT'].'/storage/app/public';
-$linkFolder = $_SERVER['DOCUMENT_ROOT'].'/public/storage';
-symlink($targetFolder,$linkFolder);
-echo "$targetFolder <br> $linkFolder";
 
-return;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   
