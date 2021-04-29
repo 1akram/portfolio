@@ -212,8 +212,13 @@
                     <form action="{{ route('updateSetting') }}" method="post" enctype="multipart/form-data" >
                         @csrf
                         <input type="text" class="input" name="title" placeholder="@lang('texts.SITE_TITLE_KEY')" value="{{$setting->siteTitle}}">
+                        @error('title')
+                        <div class="alert-danger">{{ $message }}</div>
+                        @enderror 
                         <input type="text" class="input" name="KeyWords" placeholder="@lang('texts.SITE_KEYWORDS_KEY')" value="{{$setting->keyWord}}">
-                        <input type="file" class="input" name="logo" accept="image/png">
+                        @error('KeyWords')
+                        <div class="alert-danger">{{ $message }}</div>
+                        @enderror                        <input type="file" class="input" name="logo" accept="image/png">
                         <div>
                             <img src="{{asset(Storage::url($setting->logo))}}" class="img-thumbnail" alt="{{$setting->siteTitle}}">
                         </div>

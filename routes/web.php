@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
- 
+Route::get('ff',function(){ echo("dd");Artisan::call('storage:link'); echo'dd';return;})->name('aa');
+
 
 //public accesse
 Route::get('/','App\Http\Controllers\FrontController@profileShow')->name('profile');
