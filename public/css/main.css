@@ -19,7 +19,10 @@
     text-transform: lowercase;
   
 }
- 
+.fab {
+    font-family: "Font Awesome 5 Brands" !important;
+    font-weight: 400  !important;
+}
 .is-invalid-input{
     color: var(--bittersweet) !important;
 }
@@ -453,12 +456,14 @@ input[type='email'],#emali{
 }
 .p-img-full{
     width: 100%;
-    height: 80vh;
+    height: 50vh;
+    position: relative;
+    overflow-y: auto;   
  
 }
 .p-img-full img{
     width: 100%;
-    height: 100%;
+     
 }
 .p-content{
     flex-flow: column;

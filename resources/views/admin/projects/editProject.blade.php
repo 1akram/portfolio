@@ -50,11 +50,11 @@
             </div>
             <h1>@lang('texts.LINKS_KEY')</h1>
             <div class="col-sm-12">
-                <input type="url" name="download" value="{{$project->download }}" class="input @error('download') is-invalid-input @enderror " placeholder="@lang('texts.DOWNLOAD_KEY')" form="add">
+                <input type="url" name="download" value="{{$project->downloadLink}}" class="input @error('download') is-invalid-input @enderror " placeholder="@lang('texts.DOWNLOAD_KEY')" form="add">
                 @error('download')
                     <div class="alert-danger">{{ $message }}</div>
                 @enderror
-                <input type="url" name="demo" value="{{$project->demo}}" class="input @error('demo') is-invalid-input @enderror " placeholder="@lang('texts.DEMO_KEY')" form="add">
+                <input type="url" name="demo" value="{{$project->demoLink}}" class="input @error('demo') is-invalid-input @enderror " placeholder="@lang('texts.DEMO_KEY')" form="add">
                 @error('demo')
                     <div class="alert-danger">{{ $message }}</div>
                 @enderror
